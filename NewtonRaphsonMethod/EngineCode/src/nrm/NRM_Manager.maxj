@@ -1,0 +1,47 @@
+package nrm;
+
+import static com.maxeler.maxcompiler.v2.managers.standard.Manager.link;
+
+import com.maxeler.maxcompiler.v2.build.EngineParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.managers.BuildConfig;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.CPUTypes;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.EngineInterface;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.InterfaceParam;
+import com.maxeler.maxcompiler.v2.managers.standard.IOLink.IODestination;
+import com.maxeler.maxcompiler.v2.managers.standard.Manager;
+
+public class NRM_Manager {
+	private static final String s_kernelName = "NRM_Kernel";
+
+	public static void main(String[] args) {
+		EngineParameters params = new EngineParameters(args);
+		Manager manager = new Manager(params);
+		Kernel kernel = new NRM_Kernel(manager.makeKernelParameters(s_kernelName));
+		manager.setKernel(kernel);
+		manager.setIO(link("x1", IODestination.CPU));
+		manager.createSLiCinterface(interfaceDefault());
+		configBuild(manager, params);
+		manager.build();
+	}
+
+	private static EngineInterface interfaceDefault() {
+		EngineInterface engine_interface = new EngineInterface();
+		CPUTypes type = CPUTypes.DOUBLE;
+		int size = type.sizeInBytes();
+		InterfaceParam x0 = engine_interface.addParam("x0", type);
+		engine_interface.setScalar(s_kernelName, "x0", x0);
+		InterfaceParam N = engine_interface.addParam("maxmitr", CPUTypes.UINT64);
+		engine_interface.setTicks(s_kernelName, N);
+		engine_interface.setStream("x1", type, N * size);
+		return engine_interface;
+	}
+
+	private static void configBuild(Manager manager, EngineParameters params) {
+		manager.setEnableStreamStatusBlocks(false);
+		BuildConfig buildConfig = manager.getBuildConfig();
+		buildConfig.setMPPRCostTableSearchRange(params.getMPPRStartCT(), params.getMPPREndCT());
+		buildConfig.setMPPRParallelism(params.getMPPRThreads());
+		buildConfig.setMPPRRetryNearMissesThreshold(params.getMPPRRetryThreshold());
+	}
+}

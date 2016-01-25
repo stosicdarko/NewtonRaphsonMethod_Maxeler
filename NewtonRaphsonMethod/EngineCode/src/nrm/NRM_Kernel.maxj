@@ -1,0 +1,30 @@
+package nrm;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEType;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+public class NRM_Kernel extends Kernel {
+
+	private static final DFEType type = dfeFloat(11, 53);
+
+	public NRM_Kernel(KernelParameters parameters) {
+		super(parameters);
+
+		DFEVar x0 = io.scalarInput("x0", type);
+		DFEVar h, x1;
+		x1 = x0;
+		int maxmitr = 10;
+
+		for (int itr = 1; itr <= maxmitr; itr++) {
+			//h = f(x0) / df(x0);
+			h = (x0 * x0 * x0 - x0 - 1) / (3 * x0 * x0 - 1);
+			x1 = x0 - h;
+			x0 = x1;
+		}
+
+		io.output("x1", x1, type);
+	}
+
+}

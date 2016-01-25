@@ -1,0 +1,63 @@
+Wed 10:50: ########################################## 
+Wed 10:50: Compiling.
+Wed 10:50: ########################################## 
+
+Wed 10:50: MaxCompiler version: 2015.1.1 (simulation only).
+Wed 10:50: Build Simulation run rule for NewtonRaphsonMethod start time: Wed Jan 13 10:50:27 PST 2016.
+Wed 10:50: Project location: /home/demo/workspace/NewtonRaphsonMethod.
+Wed 10:50: Detailed build log: /home/demo/workspace/NewtonRaphsonMethod/RunRules/Simulation/build.log.
+
+Wed 10:50: Compiling Engine Code.
+Wed 10:50: Engine building skipped (no changes on .max files).
+Wed 10:50: Compiling CPU Code.
+Wed 10:50: Run CPU project make files updating
+Wed 10:50: Executing command:
+Wed 10:50: java -jar /opt/maxeler/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /home/demo/workspace/NewtonRaphsonMethod Simulation 
+Wed 10:50: Command output:
+
+Wed 10:50: MaxCompiler Project Admin Tool Version 2015.1.10001
+Wed 10:50:  Copyright Maxeler Technologies 2010 - 2015. All rights reserved.
+
+Wed 10:50: Handler version 2
+Wed 10:50: Updating RunRule dependent Makefiles for RunRule 'Simulation'
+Wed 10:50: 	Updating: Simulation
+Wed 10:50: Found makefiles: 1
+Wed 10:50: 	Updated: Simulation
+Wed 10:50: Run CPU make.
+Wed 10:50: make RUNRULE=Simulation 
+Wed 10:50: Command output:
+Wed 10:50: make -f Makefile.rules build
+Wed 10:50: make[1]: Entering directory `/home/demo/workspace/NewtonRaphsonMethod/CPUCode'
+Wed 10:50: set -e; rm -f ../RunRules/Simulation/objects/c/NRM_CPUCode.d ;                                                             \
+Wed 10:50: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxeler/maxcompiler/include/slic'  -Wno-error NRM_CPUCode.c > ../RunRules/Simulation/objects/c/NRM_CPUCode.d.$$ ;                                 \
+Wed 10:50:       sed 's,\(NRM_CPUCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/NRM_CPUCode.d : ,g' < ../RunRules/Simulation/objects/c/NRM_CPUCode.d.$$ > ../RunRules/Simulation/objects/c/NRM_CPUCode.d; \
+Wed 10:50:       rm -f ../RunRules/Simulation/objects/c/NRM_CPUCode.d.$$
+Wed 10:50: make[1]: Leaving directory `/home/demo/workspace/NewtonRaphsonMethod/CPUCode'
+Wed 10:50: make[1]: Entering directory `/home/demo/workspace/NewtonRaphsonMethod/CPUCode'
+Wed 10:50: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxeler/maxcompiler/include/slic'  -c NRM_CPUCode.c -o ../RunRules/Simulation/objects/c/NRM_CPUCode.o
+Wed 10:50: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxeler/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/NRM ../RunRules/Simulation/objects/maxfiles/slic_NRM.o ../RunRules/Simulation/objects/c/NRM_CPUCode.o -g -O3  -L '/opt/maxeler/maxcompiler/lib' -lslic -L '/opt/maxeler/maxcompiler/lib/maxeleros-sim/lib' -lmaxeleros -lpthread -lm -lrt 
+Wed 10:50: make[1]: Leaving directory `/home/demo/workspace/NewtonRaphsonMethod/CPUCode'
+Wed 10:50: Build completed: Wed Jan 13 10:50:28 PST 2016
+
+
+Wed 10:50: ########################################## 
+Wed 10:50: Running
+Wed 10:50: ########################################## 
+Wed 10:50: Executing command:
+Wed 10:50: '/home/demo/workspace/NewtonRaphsonMethod/RunRules/Simulation/binaries/NRM' 
+Wed 10:50: Command output:
+Wed 10:50: At Iteration no.   1, x = 1.3478260869565
+Wed 10:50: At Iteration no.   2, x = 1.3252003989509
+Wed 10:50: At Iteration no.   3, x = 1.3247181739991
+Wed 10:50: At Iteration no.   4, x = 1.3247179572448
+Wed 10:50: At Iteration no.   5, x = 1.3247179572447
+Wed 10:50: At Iteration no.   6, x = 1.3247179572447
+Wed 10:50: At Iteration no.   7, x = 1.3247179572447
+Wed 10:50: At Iteration no.   8, x = 1.3247179572447
+Wed 10:50: At Iteration no.   9, x = 1.3247179572447
+Wed 10:50: At Iteration no.  10, x = 1.3247179572447
+Wed 10:50: After  10 iterations, root = 1.3247179572447
+Wed 10:50: Running on DFE.
+Wed 10:50: Checking data read from DFE.
+Wed 10:50: The test is OK!
+Wed 10:50: Process terminated with exit code 0.
